@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - redis:/data
+    networks:
+      - internal-net  
+
+volumes:
+  redis:
+    external: false
+   
+networks:
+  internal-net:
+    external:
+      name: docker-network-0

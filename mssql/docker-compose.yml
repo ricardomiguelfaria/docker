@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  mssql:
+    container_name: mssql-backend
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    ports:
+      - "443:1433"
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    mem_limit: 2048m
+    cpus: 0.5 
+    volumes:
+       - mssql-data:/var/opt/mssql
+
+volumes:
+  mssql-data:
+    external: false
+   

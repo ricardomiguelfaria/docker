@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  passwordpusher:
+    container_name: passwordpusher 
+    image: docker.io/pglombardo/pwpush-ephemeral:latest
+    ports:
+      - 8090:5100
+
+networks:
+  default:
+    external:
+      name: docker-network-0

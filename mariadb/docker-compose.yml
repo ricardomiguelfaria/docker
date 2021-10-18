@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  mariadb:
+      image: mariadb:latest
+      container_name: mariadb
+      restart: unless-stopped
+      ports:
+        - 3306:3306
+      environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=db
+      volumes:
+        - mariadb-data:/var/lib/mysql
+      networks:
+        - internal-net
+
+volumes:
+  mariadb-data:
+    external: false
+
+networks:
+  internal-net:
+    external:
+      name: docker-network-0
